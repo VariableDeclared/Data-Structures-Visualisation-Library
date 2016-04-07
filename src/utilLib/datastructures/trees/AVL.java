@@ -11,12 +11,12 @@ import java.io.PrintStream;
  *
  * @author UP732011 <UP732011@myport.ac.uk>
  */
-public class BST<V> {
+public class AVL<V> {
     Node<Integer, V> _root;
     public static final int PREORDER = 0;
     public static final int INORDER = 1;
     public static final int POSTORDER = 2;
-    public BST()
+    public AVL()
     {
         _root = null;
     }
