@@ -53,14 +53,14 @@ public class BST<V> {
                 output.println(node.getValue());
                 break;
             case INORDER:
-                traverseTree(PREORDER, node.getLeft(), output);
+                traverseTree(INORDER, node.getLeft(), output);
                 output.println(node.getValue());
-                traverseTree(PREORDER, node.getRight(), output);
+                traverseTree(INORDER, node.getRight(), output);
                 break;
             case POSTORDER:
                 output.println(node.getValue());
-                traverseTree(PREORDER, node.getLeft(), output);
-                traverseTree(PREORDER, node.getRight(), output);
+                traverseTree(POSTORDER, node.getLeft(), output);
+                traverseTree(POSTORDER, node.getRight(), output);
                 break;
         }
     }
