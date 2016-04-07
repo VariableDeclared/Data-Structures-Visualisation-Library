@@ -13,7 +13,7 @@ public class Node<K, V> {
     private final V _value;
     private final K _key;
     private Node<K, V> _left, _right;
-    protected Node(K key, V value)
+    public Node(K key, V value)
     {
         this(key, value, null, null);
     }

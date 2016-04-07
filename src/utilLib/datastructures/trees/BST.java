@@ -32,11 +32,18 @@ public class BST<V> {
            result.setRight(node);
            
     }
+    public Node<Integer, V> getRoot()
+    {
+        return _root;
+    }
     public void traverseTree(int traversalType,Node<Integer, V> node,
             PrintStream output)
     {
         if(node == null)
+        {
             output.println("Leaf");
+            return;
+        }
         //preorder
         switch(traversalType)
         {
