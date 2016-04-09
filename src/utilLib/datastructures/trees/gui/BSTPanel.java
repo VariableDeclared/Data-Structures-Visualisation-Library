@@ -30,18 +30,18 @@ public class BSTPanel extends JPanel {
                 RenderingHints.VALUE_ANTIALIAS_ON);
         int treeHeight = _tree.getHeight(_tree.getRoot(), 0);
         float nodeWidth =
-                new Double(this.getWidth()/(Math.pow(2, 2+1)-1)).floatValue();
+                new Double(this.getWidth()/(Math.pow(2, treeHeight+1)-1)).floatValue();
         
-        System.out.println(nodeWidth);
+        System.out.println(treeHeight);
         drawTree((Graphics2D) g,nodeWidth, 
                 Math.round(0.2f*this.getHeight()), _tree.getRoot(), 0, 
-                new Position(Math.round(0.5*this.getWidth()), 0));
+                new Position(Math.round(0.5*(this.getWidth()-nodeWidth)), 0));
     }
     private void drawTree(Graphics2D g, float nodeWidth,
             int treeHeight, Node<Integer, String> node,
             int level, Position pos)
     {
-       
+       //draw node
         g.setColor(Color.RED);
         g.fillOval(pos.getX().intValue(), pos.getY().intValue(), 
                 Math.round(nodeWidth), Math.round(nodeWidth));
@@ -52,10 +52,7 @@ public class BSTPanel extends JPanel {
         g.drawString(node.getKey().toString(), pos.getX().intValue()+nodeWidth/2,
                 pos.getY().intValue()+nodeWidth/2);
         level += 1;
-        
-        //long nodesForNextLevel = Math.round(Math.pow(2, level) 
-          //      - Math.pow(2, level+1));
-        
+
         Integer y = new Long(Math.round(nodeWidth*level)).intValue();
         int roundedNodeWidth = Math.round(nodeWidth/2);
         int lineQuotient = Math.round(nodeWidth*0.85f);
@@ -64,9 +61,7 @@ public class BSTPanel extends JPanel {
         {
             Position leftPos = new Position(pos.getX().intValue()-nodeWidth, y);
             //draw line
-           
-            
-            g.drawLine(pos.getX().intValue()+lineQuotient,
+            g.drawLine(pos.getX().intValue()+lineQuotient/2,
                     pos.getY().intValue()+lineQuotient,
                     leftPos.getX().intValue()+roundedNodeWidth,
                     leftPos.getY().intValue()+roundedNodeWidth);
@@ -74,12 +69,12 @@ public class BSTPanel extends JPanel {
                     treeHeight,node.getLeft(), level, leftPos);
             
         }
-        else if (node.getRight() != null)
+        if (node.getRight() != null)
         {
             Position rightPos = new Position(pos.getX().intValue()+nodeWidth, y);
             
              
-            g.drawLine(pos.getX().intValue()+lineQuotient,
+            g.drawLine(pos.getX().intValue()+lineQuotient/2,
                     pos.getY().intValue()+lineQuotient,
                     rightPos.getX().intValue()+roundedNodeWidth,
                     rightPos.getY().intValue()+roundedNodeWidth);

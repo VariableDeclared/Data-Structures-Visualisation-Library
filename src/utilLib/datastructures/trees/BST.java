@@ -66,12 +66,11 @@ public class BST<V> {
     }
     public int getHeight(Node<Integer, V> node, int accumulator)
     {
-        System.out.println("+1");
         if(node == null)
-            return -1;
+            return accumulator -= 1;
         accumulator += 1;
-        return Math.max(getHeight(node.getRight(), accumulator)+accumulator, 
-                getHeight(node.getLeft(),accumulator)+accumulator);
+        return Math.max(getHeight(node.getRight(), accumulator), 
+                getHeight(node.getLeft(),accumulator));
     }
     public Node<Integer,V> searchTree(Node<Integer, V> node, Integer key)
     {
