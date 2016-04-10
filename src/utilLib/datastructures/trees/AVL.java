@@ -5,94 +5,31 @@
  */
 package utilLib.datastructures.trees;
 
-import java.io.PrintStream;
+import utilLib.datastructures.interfaces.TreeAction;
 
 /**
  *
  * @author UP732011 <UP732011@myport.ac.uk>
  */
-public class AVL<V> {
-    Node<Integer, V> _root;
-    public static final int PREORDER = 0;
-    public static final int INORDER = 1;
-    public static final int POSTORDER = 2;
-    public AVL()
+public class AVL<V> extends BST<V> {
+    
+    @Override
+    public Node<Integer, V> insert(Node<Integer, V> node)
     {
-        _root = null;
+        Node<Integer, V> insertedNode = super.insert(node);
+        rebalanceTree();
+        
+        return insertedNode;
+    }
+    private void rebalanceTree()
+    {
+        traverseTree(PREORDER, _root,node -> {
+            
+        });
+    }
+    private int getBalanceFactor(Node<Integer, V> node)
+    {
+        return getHeight(node.getLeft(),0) - getHeight(node.getRight(),0);
     }
     
-    public void insert(Node<Integer, V> node)
-    {
-       Node<Integer, V> result = searchTree(_root, node.getKey());
-       if(result == null)
-           _root = node;
-       else if (node.getKey() < result.getKey())
-           result.setLeft(node);
-       else
-           result.setRight(node);
-           
-    }
-    public Node<Integer, V> getRoot()
-    {
-        return _root;
-    }
-    public void traverseTree(int traversalType,Node<Integer, V> node,
-            PrintStream output)
-    {
-        if(node == null)
-        {
-            output.println("Leaf");
-            return;
-        }
-        //preorder
-        switch(traversalType)
-        {
-            case PREORDER:
-                traverseTree(PREORDER, node.getLeft(), output);
-                traverseTree(PREORDER, node.getRight(), output);
-                output.println(node.getValue());
-                break;
-            case INORDER:
-                traverseTree(INORDER, node.getLeft(), output);
-                output.println(node.getValue());
-                traverseTree(INORDER, node.getRight(), output);
-                break;
-            case POSTORDER:
-                output.println(node.getValue());
-                traverseTree(POSTORDER, node.getLeft(), output);
-                traverseTree(POSTORDER, node.getRight(), output);
-                break;
-        }
-    }
-    public int getHeight(Node<Integer, V> node, int accumulator)
-    {
-        System.out.println("+1");
-        if(node == null)
-            return -1;
-        accumulator += 1;
-        return Math.max(getHeight(node.getRight(), accumulator)+accumulator, 
-                getHeight(node.getLeft(),accumulator)+accumulator);
-    }
-    public Node<Integer,V> searchTree(Node<Integer, V> node, Integer key)
-    {
-        if(node == null)
-        {
-            return node;
-        }
-        if(node.getKey().equals(key))
-            return node;
-        else
-        {
-            Node<Integer, V> result = null;
-            if(key < node.getKey())
-                result = searchTree(node.getLeft(), key);
-            else
-                result = searchTree(node.getRight(), key);
-                
-            if(result == null)
-                return node;
-            else
-                return result;
-        }
-    }
 }

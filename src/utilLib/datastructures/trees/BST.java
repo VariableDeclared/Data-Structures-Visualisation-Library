@@ -6,13 +6,13 @@
 package utilLib.datastructures.trees;
 
 import java.io.PrintStream;
-
+import utilLib.datastructures.interfaces.TreeAction;
 /**
  *
  * @author UP732011 <UP732011@myport.ac.uk>
  */
 public class BST<V> {
-    Node<Integer, V> _root;
+    protected Node<Integer, V> _root;
     public static final int PREORDER = 0;
     public static final int INORDER = 1;
     public static final int POSTORDER = 2;
@@ -21,7 +21,7 @@ public class BST<V> {
         _root = null;
     }
     
-    public void insert(Node<Integer, V> node)
+    public Node<Integer, V> insert(Node<Integer, V> node)
     {
        Node<Integer, V> result = searchTree(_root, node.getKey());
        if(result == null)
@@ -30,37 +30,37 @@ public class BST<V> {
            result.setLeft(node);
        else
            result.setRight(node);
-           
+       return node;   
     }
     public Node<Integer, V> getRoot()
     {
         return _root;
     }
     public void traverseTree(int traversalType,Node<Integer, V> node,
-            PrintStream output)
+            TreeAction action)
     {
         if(node == null)
         {
-            output.println("Leaf");
+            //action.action(node);
             return;
         }
         //preorder
         switch(traversalType)
         {
             case PREORDER:
-                traverseTree(PREORDER, node.getLeft(), output);
-                traverseTree(PREORDER, node.getRight(), output);
-                output.println(node.getValue());
+                traverseTree(PREORDER, node.getLeft(), action);
+                traverseTree(PREORDER, node.getRight(), action);
+                action.action(node);
                 break;
             case INORDER:
-                traverseTree(INORDER, node.getLeft(), output);
-                output.println(node.getValue());
-                traverseTree(INORDER, node.getRight(), output);
+                traverseTree(INORDER, node.getLeft(), action);
+                action.action(node);
+                traverseTree(INORDER, node.getRight(), action);
                 break;
             case POSTORDER:
-                output.println(node.getValue());
-                traverseTree(POSTORDER, node.getLeft(), output);
-                traverseTree(POSTORDER, node.getRight(), output);
+                action.action(node);
+                traverseTree(POSTORDER, node.getLeft(), action);
+                traverseTree(POSTORDER, node.getRight(), action);
                 break;
         }
     }
