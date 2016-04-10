@@ -1,0 +1,6 @@
+{
+  "name": "Utillib",
+  "tagline": "A little library that i've written to solidify learnt skills. Includes Binary Search Trees and AVLs... So far",
+  "body": "# utilLib\r\nA little library that i've written to solidify learnt skills. Includes Binary Search Trees and AVLs... So far\r\n\r\n#This was originally to solidfy my skills\r\nBut now it's become a hobby, as creating trees in code is actually quite cool. In this library you will find code that creates a BST \r\nand, not working code, that is meant to create an AVL (work in progress).\r\n\r\n##Hello internet wonderers\r\nIf you wish to use my code, feel free, fork, clone or down right copy and paste all you like, all I ask is that:\r\n(i) if you're here to learn, that you learn and reference me (up732011@myport.ac.uk).\r\n(ii) if you're using this to actually create something, cool!\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
