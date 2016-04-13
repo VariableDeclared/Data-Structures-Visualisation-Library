@@ -32,7 +32,7 @@ public class BSTPanel extends JPanel {
         float nodeWidth =
                 new Double(this.getWidth()/(Math.pow(2, treeHeight+1)-1)).floatValue();
         
-        System.out.println(treeHeight);
+        //System.out.println(treeHeight);
         drawTree((Graphics2D) g,nodeWidth, 
                 Math.round(0.2f*this.getHeight()), _tree.getRoot(), 0, 
                 new Position(Math.round(0.5*(this.getWidth()-nodeWidth)), 0));
