@@ -31,47 +31,76 @@ public class AVL<V> extends BST<V> {
     }
     private void rotate(Node<Integer, V> node, int rotation)
     {
+        Node child, cr;
+        System.out.println("Rotating: "+ rotation);
+        traverseTree(INORDER, _root, elm -> 
+            {System.out.println(elm.getValue()); });
         switch(rotation)
         {
+            
             case LL:
-                node.getLeft().setRight(node);
-                node.setLeft(node.getLeft().getLeft().getLeft());
+                child = node.getLeft();
+                node.setLeft(child.getRight());
+                child.setRight(node);
                 break;
             case RR:
-                node.getRight().setLeft(node);
-                node.setRight(node.getRight().getRight().getRight());
+                child = node.getRight();
+                node.setRight(child.getLeft());
+                child.setLeft(node);
                 break;
             case LR:
-                
+                child = node.getLeft();
+                cr = child.getRight();
+                child.setRight(cr.getLeft());
+                node.setLeft(cr.getRight());
                 break;
             case RL:
-                
+                child = node.getRight();
+                cr = child.getLeft();
+                child.setLeft(cr.getRight());
+                node.setRight(cr.getLeft());
                 break;
                 
         }
+        
+        traverseTree(INORDER, _root, elm -> 
+            {System.out.println(elm.getValue()); });
     }
     private void rebalanceTree()
     {
         //System.out.println(getBalanceFactor(this._root));
-        traverseTree(PREORDER, _root,node -> {
+        traverseTree(INORDER, _root, node -> {
+            
             int balanceFactor = getBalanceFactor(node);
-            if(balanceFactor >= -1 || balanceFactor <= 1)
+            //System.out.println(node.getValue() + " : " + balanceFactor);
+            if(balanceFactor >= -1 && balanceFactor <= 1)
             {} //no rebalancing required.
             else if (balanceFactor < 0) //right heavy
             {
                 if(balanceFactor == -2)
                 {
                     
+                    rotate(node, RR);
                 }
                 else
                 {
-                    
+                    rotate(node, RL);
                 }
             }
             else //left heavy
             {
-                
+                if(balanceFactor == 2)
+                {
+                    rotate(node, LL);
+                }
+                else
+                {
+                    rotate(node, LR);
+                }
             }
+            balanceFactor = getBalanceFactor(node);
+
+            //System.out.println(node.getValue() + " after  : " + balanceFactor);
         });
     }
     private int getBalanceFactor(Node<Integer, V> node)
