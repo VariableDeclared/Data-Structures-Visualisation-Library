@@ -5,6 +5,7 @@
  */
 package utilLib.datastructures.trees;
 
+import utilLib.datastructures.trees.nodes.Node;
 import utilLib.datastructures.interfaces.TreeAction;
 
 /**
@@ -33,7 +34,7 @@ public class AVL<V> extends BST<V> {
     {
         Node child, cr;
         System.out.println("Rotating: "+ rotation);
-        traverseTree(INORDER, _root, elm -> 
+        traverseTree(INORDER, this.getRoot(), elm -> 
             {System.out.println(elm.getValue()); });
         switch(rotation)
         {
@@ -63,14 +64,12 @@ public class AVL<V> extends BST<V> {
                 
         }
         
-        traverseTree(INORDER, _root, elm -> 
+        traverseTree(INORDER, this.getRoot(), elm -> 
             {System.out.println(elm.getValue()); });
     }
     private void rebalanceTree()
     {
-        //System.out.println(getBalanceFactor(this._root));
-        traverseTree(INORDER, _root, node -> {
-            
+        traverseTree(INORDER, this.getRoot(), node -> {
             int balanceFactor = getBalanceFactor(node);
             //System.out.println(node.getValue() + " : " + balanceFactor);
             if(balanceFactor >= -1 && balanceFactor <= 1)
