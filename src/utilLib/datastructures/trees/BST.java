@@ -5,14 +5,14 @@
  */
 package utilLib.datastructures.trees;
 
-import java.io.PrintStream;
+import utilLib.datastructures.trees.nodes.Node;
 import utilLib.datastructures.interfaces.TreeAction;
 /**
  *
  * @author UP732011 <UP732011@myport.ac.uk>
  */
 public class BST<V> {
-    protected Node<Integer, V> _root;
+    private Node<Integer, V> _root;
     public static final int PREORDER = 0;
     public static final int INORDER = 1;
     public static final int POSTORDER = 2;
@@ -23,7 +23,7 @@ public class BST<V> {
     
     public Node<Integer, V> insert(Node<Integer, V> node)
     {
-       Node<Integer, V> result = searchTree(_root, node.getKey());
+       Node<Integer, V> result = searchTree(this.getRoot(), node.getKey());
        if(result == null)
            _root = node;
        else if (node.getKey() < result.getKey())
@@ -32,11 +32,20 @@ public class BST<V> {
            result.setRight(node);
        return node;   
     }
+    private Node<Integer, V> getRoot(Node node)
+    {
+        if(node == null || node.getParent() == null )
+            return node;
+        else
+            return getRoot(node.getParent());
+    }
     public Node<Integer, V> getRoot()
     {
+        //make sure the root is the root.
+        _root = getRoot(_root);
         return _root;
     }
-    public void traverseTree(int traversalType,Node<Integer, V> node,
+    public void traverseTree(int traversalType, Node<Integer, V> node,
             TreeAction action)
     {
         if(node == null)
@@ -82,7 +91,7 @@ public class BST<V> {
             return node;
         else
         {
-            Node<Integer, V> result = null;
+            Node<Integer, V> result;
             if(key < node.getKey())
                 result = searchTree(node.getLeft(), key);
             else

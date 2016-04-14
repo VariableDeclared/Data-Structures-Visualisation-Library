@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package utilLib.datastructures.interfaces;
-import utilLib.datastructures.trees.Node;
+import utilLib.datastructures.trees.nodes.Node;
 /**
  *
  * @author UP732011 <UP732011@myport.ac.uk>
