@@ -7,6 +7,7 @@ package utilLib.datastructures.trees;
 
 import utilLib.datastructures.trees.nodes.Node;
 import utilLib.datastructures.interfaces.TreeAction;
+import java.util.*;
 /**
  *
  * @author UP732011 <UP732011@myport.ac.uk>
@@ -31,6 +32,60 @@ public class BST<V> {
        else
            result.setRight(node);
        return node;   
+    }
+//    private Node getNext(SearchAlgos alg)
+//    {
+//        if(alg.equals(SearchAlgos.BFS))
+//        {
+//            
+//        }
+//        else
+//        {
+//            
+//        }
+//    }
+    public void searchTree(SearchAlgos alg, Node<Integer, V> beginningNode,
+            TreeAction action)
+    {
+    
+        
+        if(beginningNode == null)
+            action.action(new Node("0","Nothing"));
+        if(alg.equals(SearchAlgos.BFS))
+        {
+            Queue q = new LinkedList();
+            q.add(beginningNode);
+            while(!q.isEmpty())
+            {
+                Node current = (Node) q.poll();
+                action.action(current);
+                if(current.getLeft() != null)
+                    q.add(current.getLeft());
+                if(current.getRight() != null)
+                    q.add(current.getRight());
+            }
+        }
+        else
+        {
+            Stack s = new Stack();
+            s.add(beginningNode);
+            while(!s.empty())
+            {
+                
+                Node current = (Node) s.pop();
+                
+                if(current.getLeft() != null)
+                    s.add(current.getLeft());
+                if(current.getRight() != null)
+                    s.add(current.getRight());
+                action.action(current);
+                
+                
+            }
+        }
+        
+        
+        
     }
     private Node<Integer, V> getRoot(Node node)
     {
