@@ -8,7 +8,8 @@ package utilLib.datastructures.lists;
 import utilLib.datastructures.interfaces.*;
 /**
  *
- * @author UP732011 <UP732011@myport.ac.uk>
+ * @author UP732011 UP732011@myport.ac.uk
+ * @param <T> the type to be used for nodes of this list
  */
 public class LinkedList<T> implements Queue<T>, Stack<T>, List<T>
 {

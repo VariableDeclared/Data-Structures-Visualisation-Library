@@ -7,7 +7,8 @@ package utilLib.datastructures.interfaces;
 
 /**
  *
- * @author UP732011 <UP732011@myport.ac.uk>
+ * @author UP732011 UP732011@myport.ac.uk
+ * @param <T> the parameter type for this queue
  */
 public interface Queue<T>
 {
