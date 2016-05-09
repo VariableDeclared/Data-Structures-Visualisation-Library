@@ -20,31 +20,33 @@ public class LinkedList<T> implements Queue<T>, Stack<T>, List<T>
     }
     public LinkedList(T[] items)
     {
-        tail = null;
-        head = new DoubleyLinkedNode<>(items[0], tail, null);
+        this();
+        insertListOfItems(items);
         
+    }
+    public final void insertListOfItems(T [] items)
+    {
         if(items.length == 0)
             return;
-        DoubleyLinkedNode current = head;
-        for(int i = 1; i < items.length; i++)
+        LLNode current = head;
+        for(int i = 0; i < items.length; i++)
         {
             if(i == items.length)
             {
                 tail = new DoubleyLinkedNode(items[i], null, 
-                        current);
+                        new DoubleyLinkedNode(current));
                 current.setNext(tail);
             }
             else
-                current.setNext(new DoubleyLinkedNode(items[i], null, current));
-            
+                current.setNext(new DoubleyLinkedNode(items[i], null, 
+                        new DoubleyLinkedNode(current)));
         }
     }
+    
     @Override
     public T getItem(T item)
     {
         DoubleyLinkedNode current = new DoubleyLinkedNode(head);
-        
-        
         
         throw new UnsupportedOperationException("Not implemented");
         //not implemented.
