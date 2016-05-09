@@ -7,7 +7,7 @@ package utilLib.datastructures.trees.nodes;
 
 /**
  *
- * @author UP732011 <UP732011@myport.ac.uk>
+ * @author UP732011 UP732011@myport.ac.uk
  */
 public class Node<K, V> {
     

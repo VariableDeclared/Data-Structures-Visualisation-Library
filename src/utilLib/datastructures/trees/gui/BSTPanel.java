@@ -13,7 +13,7 @@ import utilLib.datastructures.trees.*;
 import utilLib.geom.*;
 /**
  *
- * @author UP732011 <UP732011@myport.ac.uk>
+ * @author UP732011 UP732011@myport.ac.uk
  */
 public class BSTPanel extends JPanel {
     BST<String> _tree;

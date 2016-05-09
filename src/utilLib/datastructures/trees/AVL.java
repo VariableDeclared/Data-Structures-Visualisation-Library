@@ -10,7 +10,7 @@ import utilLib.datastructures.interfaces.TreeAction;
 
 /**
  *
- * @author UP732011 <UP732011@myport.ac.uk>
+ * @author UP732011 UP732011@myport.ac.uk
  */
 public class AVL<V> extends BST<V> {
     private static final int LL = 0;

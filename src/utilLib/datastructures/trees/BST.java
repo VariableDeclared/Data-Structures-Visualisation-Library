@@ -10,7 +10,7 @@ import utilLib.datastructures.interfaces.TreeAction;
 import java.util.*;
 /**
  *
- * @author UP732011 <UP732011@myport.ac.uk>
+ * @author UP732011 UP732011@myport.ac.uk
  */
 public class BST<V> {
     private Node<Integer, V> _root;

@@ -7,7 +7,7 @@ package utilLib.datastructures.interfaces;
 import utilLib.datastructures.trees.nodes.Node;
 /**
  *
- * @author UP732011 <UP732011@myport.ac.uk>
+ * @author UP732011 UP732011@myport.ac.uk
  */
 public interface TreeAction<V> {
     public void action(Node<Integer, V> node);

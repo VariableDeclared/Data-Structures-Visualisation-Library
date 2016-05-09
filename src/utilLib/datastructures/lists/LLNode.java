@@ -7,7 +7,8 @@ package utilLib.datastructures.lists;
 
 /**
  *
- * @author UP732011 <UP732011@myport.ac.uk>
+ * @author UP732011 UP732011@myport.ac.uk
+ * @param <T> the type for this LL node
  */
 public class LLNode<T>
 {
