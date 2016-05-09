@@ -39,10 +39,16 @@ public class LinkedList<T> implements Queue<T>, Stack<T>, List<T>
             
         }
     }
-    public T getItem(DoubleyLinkedNode item)
+    @Override
+    public T getItem(T item)
     {
         DoubleyLinkedNode current = new DoubleyLinkedNode(head);
         
+        
+        
+        throw new UnsupportedOperationException("Not implemented");
+        //not implemented.
+        //return null;
     }
     @Override
     public T pop()
@@ -52,6 +58,12 @@ public class LinkedList<T> implements Queue<T>, Stack<T>, List<T>
         head = new DoubleyLinkedNode(head.getNext());
         return value;
     }
+    @Override
+    public boolean isEmpty()
+    {
+        return head.getNext() == null || tail == null;
+    }
+    
     @Override
     public void push(T value)
     {
