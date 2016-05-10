@@ -4,11 +4,15 @@
  * and open the template in the editor.
  */
 package utilLib.datastructures.interfaces;
-import utilLib.datastructures.trees.nodes.Node;
+
 /**
  *
  * @author UP732011 UP732011@myport.ac.uk
+ * @param <T> the type for this stack
  */
-public interface TreeAction<V> {
-    public void action(Node<Integer, V> node);
+public interface Stack<T>
+{
+    public T pop();
+    public void push(T value);
+    
 }

@@ -4,11 +4,15 @@
  * and open the template in the editor.
  */
 package utilLib.datastructures.interfaces;
-import utilLib.datastructures.trees.nodes.Node;
+
 /**
  *
  * @author UP732011 UP732011@myport.ac.uk
+ * @param <T> the parameter type for this queue
  */
-public interface TreeAction<V> {
-    public void action(Node<Integer, V> node);
+public interface Queue<T>
+{
+    public void enqueue(T value);
+    public T dequeue();
+    
 }
