@@ -7,7 +7,7 @@ package utilLib.datastructures.trees;
 
 import utilLib.datastructures.trees.nodes.Node;
 import utilLib.datastructures.interfaces.TreeAction;
-
+import java.util.*;
 
 /**
  *
@@ -49,8 +49,6 @@ public class BST<V> {
     public void searchTree(SearchAlgos alg, Node<Integer, V> beginningNode,
             TreeAction action)
     {
-
-
         if(beginningNode == null)
             action.action(new Node("0","Nothing"));
         if(alg.equals(SearchAlgos.BFS))
@@ -82,14 +80,8 @@ public class BST<V> {
                     s.add(current.getRight());
                 action.action(current);
 
-
             }
         }
-
-
-
-
-       return node;
 
     }
     private Node<Integer, V> getRoot(Node node)

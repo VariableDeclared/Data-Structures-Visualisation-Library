@@ -5,6 +5,7 @@
  */
 package utilLib.datastructures.trees.gui;
 
+import utilLib.datastructures.trees.BST;
 import utilLib.datastructures.trees.nodes.Node;
 import javax.swing.*;
 import java.awt.*;
