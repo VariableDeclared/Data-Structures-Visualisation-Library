@@ -32,6 +32,7 @@ public class BST<V> {
            result.setLeft(node);
        else
            result.setRight(node);
+
        return node;
      }
 //    private Node getNext(SearchAlgos alg)
@@ -87,11 +88,13 @@ public class BST<V> {
 
 
 
-    }
 
+       return node;
+
+    }
     private Node<Integer, V> getRoot(Node node)
     {
-        if(node == null || node.getParent() == null)
+        if(node == null || node.getParent() == null )
             return node;
         else
             return getRoot(node.getParent());
@@ -153,7 +156,6 @@ public class BST<V> {
                 result = searchTree(node.getLeft(), key);
             else
                 result = searchTree(node.getRight(), key);
-
             if(result == null)
                 return node;
             else
